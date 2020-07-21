@@ -32,18 +32,18 @@ class LoginController extends Controller
         $credentials = array('email'=>$users->email,'password'=>$users->email);
         if(Auth::attempt($credentials))
         {
-            return redirect('index')->with('message', 'Đăng nhập Admin thành công có auth');
+            return redirect('index')->with('message', 'Đăng nhập Google thành công !');
         }
         else
         {
-            return redirect('index')->with('message','Đăng nhập Admin không thành công ');
+            return redirect('dang-nhap')->with('message','Đăng nhập Google không thành công !');
         }
 
         
 
 
 
-        return redirect('index')->with('message', 'Đăng nhập Admin thành công');
+        return redirect('index')->with('message', 'Đăng nhập Google thành công');
       
        
     }
@@ -88,7 +88,7 @@ class LoginController extends Controller
         
 
 
-        return redirect('index')->with('message1', 'Đăng nhập Admin lần đầu thành công');
+        return redirect('index')->with('message1', 'Đăng nhập Google lần đầu thành công');
 
 
     }
