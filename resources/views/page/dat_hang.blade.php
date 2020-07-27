@@ -18,7 +18,9 @@
     <div id="content">  
         <form action="{{route('dathang')}}" method="post" class="beta-form-checkout">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <div class="row" >@if(Session::has('thongbao')){{Session::get('thongbao')}}@endif</div>
+            <div class="row" >@if (Session::has('thongbao'))
+                    <div class="alert alert-success">{{Session::get('thongbao')}}</div>
+                    @endif
             <div class="row">
                 <div class="col-sm-6">
                     <h4>Đặt hàng</h4>

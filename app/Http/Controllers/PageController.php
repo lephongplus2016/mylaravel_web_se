@@ -98,6 +98,7 @@ class PageController extends Controller
         $bill->total = $cart->totalPrice;
         $bill->payment=$req->payment;
         $bill->note=$req->notes;
+        
         $bill->save();
 
         foreach($cart->items as $key => $value){
@@ -109,7 +110,7 @@ class PageController extends Controller
             $bill_detail->save();
         }
         Session::forget('cart');
-        return redirect()->back()->with('thongbao','Đặt hàng thành công');
+        return redirect()->back()->with('thongbao','Đặt hàng thành công! nhận đơn trong 15 phút nữa');
     }
 
     public function getSearch(Request $req){

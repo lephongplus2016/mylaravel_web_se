@@ -104,3 +104,52 @@ Route::get('login-google',[
 Route::get('/google/callback','LoginController@callback_google');
 
 
+Route::get('admin',[
+	'as'=>'admin',
+	'uses'=>'AdminController@getLayout'
+]);
+
+Route::get('add',[
+	'as'=>'add',
+	'uses'=>'ProductController@getAddProduct'
+]);
+
+Route::group(['prefix'=>'admin'], function(){
+	Route::group(['prefix'=>'products'], function(){
+
+		Route::get('list','ProductController@getList');
+		
+		Route::get('add','ProductController@getAdd');
+		Route::post('add','ProductController@postProduct');
+
+		Route::post('edit/{id}','ProductController@postEdit');
+		Route::get('edit/{id}','ProductController@getEdit');
+		// Route::post('sua/{id}','XeController@postSua');
+
+		 Route::get('delete/{id}','ProductController@getDelete');
+
+	});
+});
+
+Route::group(['prefix'=>'admin'], function(){
+	Route::group(['prefix'=>'bills'], function(){
+
+		Route::get('list','BillController@getList');
+		Route::get('detail/{id}','BillController@getDetail');
+		Route::post('detail/{id}','BillController@postDetail');
+		
+
+	});
+});
+
+Route::group(['prefix'=>'admin'], function(){
+	Route::group(['prefix'=>'users'], function(){
+
+		Route::get('list','UserController@getList');
+
+		Route::post('edit/{id}','UserController@postEdit');
+		Route::get('edit/{id}','UserController@getEdit');
+		
+
+	});
+});
